@@ -1,0 +1,28 @@
+namespace: talent-app
+
+frontend:
+  replicaCount: 2
+  image:
+    repository: 208851973284.dkr.ecr.ap-south-1.amazonaws.com/b17
+    tag: frontend-latest
+    pullPolicy: Always
+  service:
+    type: LoadBalancer
+    port: 80
+    targetPort: 3000
+  env:
+    REACT_APP_API_BASE_URL: "http://backend-service:5000"
+
+backend:
+  replicaCount: 2
+  image:
+    repository: 208851973284.dkr.ecr.ap-south-1.amazonaws.com/b17
+    tag: backend-latest
+    pullPolicy: Always
+  service:
+    type: ClusterIP
+    port: 5000
+    targetPort: 5000
+  secret:
+    MONGODB_URI: ""
+    PORT: "5000"

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: {{ .Values.namespace }}
+data:
+  REACT_APP_API_BASE_URL: {{ .Values.frontend.env.REACT_APP_API_BASE_URL | quote }}
