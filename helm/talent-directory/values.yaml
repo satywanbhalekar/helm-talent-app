@@ -7,11 +7,11 @@ frontend:
     tag: frontend-latest
     pullPolicy: Always
   service:
-    type: ClusterIP
+    type: LoadBalancer
     port: 80
     targetPort: 3000
   env:
-    REACT_APP_API_BASE_URL: "/api"
+    REACT_APP_API_BASE_URL: ""
 
 backend:
   replicaCount: 2
@@ -20,7 +20,7 @@ backend:
     tag: backend-latest
     pullPolicy: Always
   service:
-    type: ClusterIP
+    type: LoadBalancer
     port: 5000
     targetPort: 5000
   secret:
@@ -28,7 +28,5 @@ backend:
     PORT: "5000"
 
 ingress:
-  enabled: true
-  className: nginx
-  host: talent.yourdomain.com
-  annotations: {}
+  enabled: false
+
