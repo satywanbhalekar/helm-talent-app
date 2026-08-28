@@ -23,3 +23,12 @@ spec:
           envFrom:
             - configMapRef:
                 name: frontend-config
+      nodeaffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: size 
+                  operator: In
+                  values:
+                    - medium
+                    - large

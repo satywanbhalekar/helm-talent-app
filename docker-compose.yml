@@ -1,26 +1,21 @@
 services:
   frontend:
-    build:
-      context: ./talent-directory
-      dockerfile: Dockerfile
-    expose:
-      - "3000"
+    container_name: frontend
+    build: ./talent-directory
     env_file:
       - ./talent-directory/.env
     depends_on:
       - backend
 
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    expose:
-      - "5000"
+    container_name: backend
+    build: ./backend
     env_file:
       - ./backend/.env
 
   nginx:
     image: nginx:latest
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
@@ -28,3 +23,5 @@ services:
     depends_on:
       - frontend
       - backend
+      
+

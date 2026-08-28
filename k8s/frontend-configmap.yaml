@@ -8,3 +8,4 @@ data:
 # fe browser url http://k8s-talentap-talentap-d91880f908-1363457137.ap-south-1.elb.amazonaws.com/
 # // If API_BASE_URL is already "/api", this creates "/api/api/talents"
 # axios.get(`${API_BASE_URL}/api/talents`);
+# REACT_APP_API_BASE_URL="https://satyam.com/api" + axios.get(\${API_BASE_URL}/talents`

@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: talent-app
+  namespace: argocd
+spec:
+  project: talent-app
+  source:
+    repoURL: https://github.com/satywanbhalekar/helm-talent-app.git
+    targetRevision: GitOps
+    path: k8s
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: talent-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
